@@ -24,7 +24,7 @@ RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 RUN pecl install APCu-beta redis memcached \
 	&& docker-php-ext-enable apcu redis memcached
 
-RUN a2enmod rewrite
+RUN a2enmod env headers rewrite
 
 ENV OWNCLOUD_VERSION 8.1.2
 VOLUME /var/www/html
