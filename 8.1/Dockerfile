@@ -42,6 +42,9 @@ RUN set -x \
 	&& rm owncloud.tar.bz2 owncloud.tar.bz2.asc
 
 COPY docker-entrypoint.sh /entrypoint.sh
+COPY owncloud-ssl.conf /etc/apache2/sites-available/
+
+EXPOSE 443
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
