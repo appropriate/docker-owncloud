@@ -34,7 +34,9 @@ if [[ "$1" = apache2* ]]; then
 		a2enmod ssl
 		a2ensite owncloud-ssl
 
-		export OWNCLOUD_TLS_CERT OWNCLOUD_TLS_KEY OWNCLOUD_TLS_PORT
+		export OWNCLOUD_TLS_CERT="$(readlink -f "$OWNCLOUD_TLS_CERT")"
+		export OWNCLOUD_TLS_KEY="$(readlink -f "$OWNCLOUD_TLS_KEY")"
+		export OWNCLOUD_TLS_PORT
 	else
 		echo >&2 'WARNING: Running ownCloud without HTTPS is not recommended.'
 		echo >&2 '         See the documentation for information on enabling HTTPS:'
